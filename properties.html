@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Properties - DevProperties</title>
+    <link rel="stylesheet" href="base.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: #2e8b57;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar h1 {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .nav-items {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-items a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-items a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .properties-hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('base.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Filter Section */
+        .filter-section {
+            padding: 60px 20px;
+            background: white;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .filter-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #2e8b57;
+        }
+
+        .search-bar {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 300px;
+            padding: 15px 25px;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #2e8b57;
+        }
+
+        .search-btn {
+            padding: 15px 35px;
+            background: #2e8b57;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .search-btn:hover {
+            background: #1a5d3a;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .filter-btn {
+            padding: 12px 30px;
+            background: #f8f9fa;
+            color: #333;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: #2e8b57;
+            color: white;
+            border-color: #2e8b57;
+            transform: translateY(-2px);
+        }
+
+        /* Properties Grid */
+        .properties-container {
+            padding: 80px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .property-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .property-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .property-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .property-card:hover .property-image {
+            transform: scale(1.05);
+        }
+
+        .property-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #2e8b57;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .property-details {
+            padding: 30px;
+        }
+
+        .property-type {
+            background: #e8f5e8;
+            color: #2e8b57;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .property-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .property-price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2e8b57;
+            margin: 15px 0;
+        }
+
+        .property-features {
+            display: flex;
+            gap: 25px;
+            margin: 20px 0;
+            color: #666;
+            font-size: 15px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .property-location {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #888;
+            margin: 15px 0;
+            font-size: 16px;
+        }
+
+        .property-description {
+            color: #555;
+            line-height: 1.7;
+            margin: 20px 0;
+            font-size: 15px;
+        }
+
+        .property-amenities {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .amenity-tag {
+            background: #f8f9fa;
+            color: #666;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 13px;
+        }
+
+        .view-details-btn {
+            width: 100%;
+            padding: 15px;
+            background: #2e8b57;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background 0.3s;
+            margin-top: 20px;
+        }
+
+        .view-details-btn:hover {
+            background: #1a5d3a;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: #2e8b57;
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .stat-item p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 50px 20px 30px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            margin: 20px 0;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #2e8b57;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .properties-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .search-bar {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .search-input {
+                min-width: 100%;
+                max-width: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <h1>DevProperties</h1>
+        <ul class="nav-items">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="properties.html">Properties</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="properties-hero">
+        <div class="hero-content">
+            <h1>Find Your Perfect Property</h1>
+            <p>Discover exceptional properties in prime locations across Cameroon</p>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <h2>Search & Filter Properties</h2>
+        
+        <div class="search-bar">
+            <input type="text" class="search-input" placeholder="Search by location, price range, or property features...">
+            <button class="search-btn">Search Properties</button>
+        </div>
+        
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All Properties</button>
+            <button class="filter-btn" data-filter="house">Houses</button>
+            <button class="filter-btn" data-filter="apartment">Apartments</button>
+            <button class="filter-btn" data-filter="villa">Villas</button>
+            <button class="filter-btn" data-filter="commercial">Commercial</button>
+            <button class="filter-btn" data-filter="land">Land</button>
+        </div>
+    </section>
+
+    <!-- Properties Grid -->
+    <section class="properties-container">
+        <div class="properties-grid">
+            <!-- Property 1: Modern Family Home -->
+            <div class="property-card" data-type="house">
+                <div class="property-badge">Featured</div>
+                <img src="max.jpg" alt="Modern Family Home" class="property-image">
+                <div class="property-details">
+                    <span class="property-type">House</span>
+                    <h3 class="property-title">Modern Family Home</h3>
+                    <div class="property-price">$450,000</div>
+                    <div class="property-features">
+                        <span class="feature-item">🏠 4 Beds</span>
+                        <span class="feature-item">🚿 3 Baths</span>
+                        <span class="feature-item">📏 2,500 sq ft</span>
+                        <span class="feature-item">🚗 2 Garage</span>
+                    </div>
+                    <div class="property-location">
+                        📍 Molyko, Buea, Southwest Region
+                    </div>
+                    <p class="property-description">
+                        Stunning modern family home with open-plan living spaces, gourmet kitchen with granite countertops, 
+                        master suite with walk-in closet, and beautifully landscaped garden. Located in a secure, family-friendly neighborhood.
+                    </p>
+                    <div class="property-amenities">
+                        <span class="amenity-tag">Swimming Pool</span>
+                        <span class="amenity-tag">Garden</span>
+                        <span class="amenity-tag">Security</span>
+                        <span class="amenity-tag">Modern Kitchen</span>
+                    </div>
+                    <button class="view-details-btn">View Full Details</button>
+                </div>
+            </div>
+
+            <!-- Property 2: Luxury Studio Apartment -->
+            <div class="property-card" data-type="apartment">
+                <img src="bb.jpg" alt="Luxury Studio Apartment" class="property-image">
+                <div class="property-details">
+                    <span class="property-type">Apartment</span>
+                    <h3 class="property-title">Luxury Studio Apartment</h3>
+                    <div class="property-price">$300,000</div>
+                    <div class="property-features">
+                        <span class="feature-item">🏠 1 Bed</span>
+                        <span class="feature-item">🚿 1 Bath</span>
+                        <span class="feature-item">📏 800 sq ft</span>
+                        <span class="feature-item">🏢 5th Floor</span>
+                    </div>
+                    <div class="property-location">
+                        📍 Molyko, Buea, Southwest Region
+                    </div>
+                    <p class="property-description">
+                        Premium studio apartment in a modern complex with 24/7 security, gym, and rooftop terrace. 
+                        Perfect for young professionals or students. Walking distance to university and shopping centers.
+                    </p>
+                    <div class="property-amenities">
+                        <span class="amenity-tag">Gym</span>
+                        <span class="amenity-tag">24/7 Security</span>
+                        <span class="amenity-tag">Parking</span>
+                        <span class="amenity-tag">Elevator</span>
+                    </div>
+                    <button class="view-details-btn">View Full Details</button>
+                </div>
+            </div>
+
+            <!-- Property 3: Luxury Beach Villa -->
+            <div class="property-card" data-type="villa">
+                <div class="property-badge">Ocean View</div>
+                <img src="Untitled.jpg" alt="Luxury Beach Villa" class="property-image">
+                <div class="property-details">
+                    <span class="property-type">Villa</span>
+                    <h3 class="property-title">Luxury Beach Villa</h3>
+                    <div class="property-price">$1,200,000</div>
+                    <div class="property-features">
+                        <span class="feature-item">🏠 5 Beds</span>
+                        <span class="feature-item">🚿 4 Baths</span>
+                        <span class="feature-item">📏 4,500 sq ft</span>
+                        <span class="feature-item">🏖️ Beachfront</span>
+                    </div>
+                    <div class="property-location">
+                        📍 Limbe Beachfront, Southwest Region
+                    </div>
+                    <p class="property-description">
+                        Magnificent beachfront villa with panoramic ocean views, private infinity pool, and direct beach access. 
+                        Features high-end finishes, multiple terraces, and lush tropical gardens. The ultimate luxury living experience.
+                    </p>
+                    <div class="property-amenities">
+                        <span class="amenity-tag">Private Beach</span>
+                        <span class="amenity-tag">Infinity Pool</span>
+                        <span class="amenity-tag">Ocean View</span>
+                        <span class="amenity-tag">Smart Home</span>
+                    </div>
+                    <button class="view-details-btn">View Full Details</button>
+                </div>
+            </div>
+
+            <!-- Property 4: Contemporary Townhouse -->
+            <div class="property-card" data-type="house">
+                <img src="nb.jpg" alt="Contemporary Townhouse" class="property-image">
+                <div class="property-details">
+                    <span class="property-type">Townhouse</span>
+                    <h3 class="property-title">Contemporary Townhouse</h3>
+                    <div class="property-price">$380,000</div>
+                    <div class="property-features">
+                        <span class="feature-item">🏠 3 Beds</span>
+                        <span class="feature-item">🚿 2.5 Baths</span>
+                        <span class="feature-item">📏 1,800 sq ft</span>
+                        <span class="feature-item">🚗 1 Garage</span>
+                    </div>
+                    <div class="property-location">
+                        📍 Buea Town, Southwest Region
+                    </div>
+                    <p class="property-description">
+                        Modern three-story townhouse with contemporary design, open-plan living areas, and private rooftop terrace. 
+                        Located in a quiet residential area with easy access to schools and business districts.
+                    </p>
+                    <div class="property-amenities">
+                        <span class="amenity-tag">Rooftop Terrace</span>
+                        <span class="amenity-tag">Contemporary Design</span>
+                        <span class="amenity-tag">Quiet Area</span>
+                        <span class="amenity-tag">Near Schools</span>
+                    </div>
+                    <button class="view-details-btn">View Full Details</button>
+                </div>
+            </div>
+
+            <!-- Property 5: Commercial Office Space -->
+            <div class="property-card" data-type="commercial">
+                <img src="image.jpg" alt="Commercial Office Space" class="property-image">
+                <div class="property-details">
+                    <span class="property-type">Commercial</span>
+                    <h3 class="property-title">Premium Office Complex</h3>
+                    <div class="property-price">$750,000</div>
+                    <div class="property-features">
+                        <span class="feature-item">🏢 8 Offices</span>
+                        <span class="feature-item">🚿 4 Baths</span>
+                        <span class="feature-item">📏 3,200 sq ft</span>
+                        <span class="feature-item">🅿️ 10 Parking</span>
+                    </div>
+                    <div class="property-location">
+                        📍 Buea Central Business District
+                    </div>
+                    <p class="property-description">
+                        State-of-the-art commercial building with multiple office spaces, conference rooms, and modern facilities. 
+                        Perfect for businesses looking for prestigious location with high visibility and professional environment.
+                    </p>
+                    <div class="property-amenities">
+                        <span class="amenity-tag">Conference Room</span>
+                        <span class="amenity-tag">Reception Area</span>
+                        <span class="amenity-tag">High-Speed Internet</span>
+                        <span class="amenity-tag">Security System</span>
+                    </div>
+                    <button class="view-details-btn">View Full Details</button>
+                </div>
+            </div>
+
+            <!-- Property 6: Residential Land -->
+            <div class="property-card" data-type="land">
+                <img src="base.jpg" alt="Residential Land" class="property-image">
+                <div class="property-details">
+                    <span class="property-type">Land</span>
+                    <h3 class="property-title">Prime Residential Plot</h3>
+                    <div class="property-price">$200,000</div>
+                    <div class="property-features">
+                        <span class="feature-item">📏 1,200 sq m</span>
+                        <span class="feature-item">🏗️ Buildable</span>
+                        <span class="feature-item">🛣️ Road Access</span>
+                        <span class="feature-item">⚡ Utilities</span>
+                    </div>
+                    <div class="property-location">
+                        📍 Malingo, Buea
+                    </div>
+                    <p class="property-description">
+                        Excellent residential plot in developing area with road access and utilities available. 
+                        Perfect for building your dream home in a peaceful neighborhood with great future potential.
+                    </p>
+                    <div class="property-amenities">
+                        <span class="amenity-tag">Road Access</span>
+                        <span class="amenity-tag">Electricity</span>
+                        <span class="amenity-tag">Water</span>
+                        <span class="amenity-tag">Peaceful Area</span>
+                    </div>
+                    <button class="view-details-btn">View Full Details</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>150+</h3>
+                <p>Properties Available</p>
+            </div>
+            <div class="stat-item">
+                <h3>500+</h3>
+                <p>Happy Clients</p>
+            </div>
+            <div class="stat-item">
+                <h3>10+</h3>
+                <p>Years Experience</p>
+            </div>
+            <div class="stat-item">
+                <h3>24/7</h3>
+                <p>Customer Support</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h3>DevProperties</h3>
+            <p>Your trusted partner in finding the perfect property</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="properties.html">Properties</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <p>&copy; 2025 DevProperties. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const propertyCards = document.querySelectorAll('.property-card');
+            const searchInput = document.querySelector('.search-input');
+            const searchBtn = document.querySelector('.search-btn');
+
+            // Filter properties by type
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.dataset.filter;
+                    
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Filter properties
+                    propertyCards.forEach(card => {
+                        if (filter === 'all' || card.dataset.type === filter) {
+                            card.style.display = 'block';
+                            card.style.animation = 'fadeIn 0.5s';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Search functionality
+            searchBtn.addEventListener('click', performSearch);
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+
+            function performSearch() {
+                const searchTerm = searchInput.value.toLowerCase();
+                
+                propertyCards.forEach(card => {
+                    const title = card.querySelector('.property-title').textContent.toLowerCase();
+                    const location = card.querySelector('.property-location').textContent.toLowerCase();
+                    const description = card.querySelector('.property-description').textContent.toLowerCase();
+                    const type = card.querySelector('.property-type').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || 
+                        location.includes(searchTerm) || 
+                        description.includes(searchTerm) || 
+                        type.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+
+            // View details button functionality
+            document.querySelectorAll('.view-details-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const card = this.closest('.property-card');
+                    const title = card.querySelector('.property-title').textContent;
+                    alert(`Full details for ${title} would open here. This would typically navigate to a detailed property page.`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - DevProperties</title>
+    <link rel="stylesheet" href="base.css">
+    <style>
+        .about-hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('base.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .about-section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin: 50px 0;
+        }
+        
+        .about-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .team-section {
+            padding: 60px 20px;
+            background: #f8f9fa;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .team-member {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            background: #ddd;
+        }
+        
+        .values-section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .value-item {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .value-icon {
+            font-size: 48px;
+            color: #2e8b57;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <h1>DevProperties</h1>
+        <ul class="nav-items">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="properties.html">Properties</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- About Hero Section -->
+    <section class="about-hero">
+        <div>
+            <h1>About DevProperties</h1>
+            <p>Your trusted partner in finding the perfect home</p>
+        </div>
+    </section>
+
+    <!-- About Content -->
+    <section class="about-section">
+        <h2>Who We Are</h2>
+        <p>DevProperties is a premier real estate company dedicated to helping clients find their dream homes and investment properties. With years of experience in the industry, we have established ourselves as trusted advisors in the real estate market.</p>
+        
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>Our Mission</h3>
+                <p>To provide exceptional real estate services by combining market expertise with personalized attention to help our clients achieve their property goals.</p>
+            </div>
+            
+            <div class="about-card">
+                <h3>Our Vision</h3>
+                <p>To be the leading real estate company known for integrity, innovation, and excellence in service delivery across all property sectors.</p>
+            </div>
+            
+            <div class="about-card">
+                <h3>Our Experience</h3>
+                <p>With over 10 years in the industry, we have successfully helped hundreds of clients buy, sell, and rent properties across various market segments.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <h2>Our Core Values</h2>
+        <div class="values-grid">
+            <div class="value-item">
+                <div class="value-icon">🏠</div>
+                <h3>Integrity</h3>
+                <p>We conduct all business with the highest ethical standards and transparency.</p>
+            </div>
+            
+            <div class="value-item">
+                <div class="value-icon">🤝</div>
+                <h3>Client Focus</h3>
+                <p>Our clients' needs and satisfaction are at the center of everything we do.</p>
+            </div>
+            
+            <div class="value-item">
+                <div class="value-icon">📊</div>
+                <h3>Market Expertise</h3>
+                <p>We stay ahead of market trends to provide informed guidance and advice.</p>
+            </div>
+            
+            <div class="value-item">
+                <div class="value-icon">🚀</div>
+                <h3>Innovation</h3>
+                <p>We embrace technology and innovative solutions to enhance our services.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <h2>Meet Our Team</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="Untitled.jpg" alt="Team Member">
+                <h3>Sarah Johnson</h3>
+                <p>CEO & Founder</p>
+                <p>15+ years in real estate with expertise in luxury properties</p>
+            </div>
+            
+            <div class="team-member">
+                <img src="Untitled.jpg" alt="Team Member">
+                <h3>Michael Chen</h3>
+                <p>Senior Property Consultant</p>
+                <p>Specializes in commercial and investment properties</p>
+            </div>
+            
+            <div class="team-member">
+                <img src="Untitled.jpg" alt="Team Member">
+                <h3>Emily Davis</h3>
+                <p>Client Relations Manager</p>
+                <p>Ensures seamless client experience from start to finish</p>
+            </div>
+            
+            <div class="team-member">
+                <img src="Untitled.jpg" alt="Team Member">
+                <h3>David Wilson</h3>
+                <p>Market Analyst</p>
+                <p>Provides data-driven insights for informed decisions</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h3>DevProperties</h3>
+            <p>Your trusted partner in finding the perfect property</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="properties.html">Properties</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <p>&copy; 2025 DevProperties. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

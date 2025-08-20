@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - DevProperties Real Estate</title>
+    <link rel="stylesheet" href="base.css">
+    <style>
+        /* Real Estate Contact Page Styles */
+        .contact-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('base.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .contact-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .contact-hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-section {
+            padding: 80px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .contact-info {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .contact-info h3 {
+            color: #2e8b57;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .contact-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            color: #2e8b57;
+            width: 30px;
+            text-align: center;
+        }
+
+        .agent-section {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .agent-card {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .agent-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #2e8b57;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            margin-right: 20px;
+        }
+
+        .agent-info h4 {
+            color: #2e8b57;
+            margin-bottom: 5px;
+        }
+
+        .agent-info p {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #2e8b57;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: #2e8b57;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #1a5d3a;
+        }
+
+        .office-hours {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+
+        .hours-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+
+        .map-section {
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 400px;
+            background: #f0f0f0;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 18px;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .emergency-contact {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+
+        .emergency-contact h4 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #2e8b57;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #1a5d3a;
+        }
+
+        @media (max-width: 1024px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .contact-hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-hero p {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <h1>DevProperties</h1>
+        <ul class="nav-items">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="properties.html">Properties</a></li>
+            <li><a href="contact-enhanced.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contact Hero Section -->
+    <section class="contact-hero">
+        <div>
+            <h1>Get In Touch With DevProperties</h1>
+            <p>Your trusted partner in finding the perfect property in Cameroon</p>
+            <p>Contact us today for expert real estate advice and exceptional service</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <h2>Contact Information & Property Inquiries</h2>
+        
+        <div class="contact-grid">
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <h3>Our Offices</h3>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div>
+                        <strong>Main Office</strong><br>
+                        Molyko Street, Buea<br>
+                        Southwest Region, Cameroon
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div>
+                        <strong>Sales & Inquiries</strong><br>
+                        +237 677 123 456<br>
+                        +237 677 987 654
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div>
+                        <strong>Email</strong><br>
+                        info@devproperties.com<br>
+                        sales@devproperties.com
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">🕒</div>
+                    <div>
+                        <strong>Business Hours</strong><br>
+                        Monday - Friday: 8:00 AM - 6:00 PM<br>
+                        Saturday: 9:00 AM - 4:00 PM<br>
+                        Sunday: Closed
+                    </div>
+                </div>
+
+                <div class="office-hours">
+                    <h4>Office Hours</h4>
+                    <ul class="hours-list">
+                        <li><span>Monday - Friday</span><span>8:00 AM - 6:00 PM</span></li>
+                        <li><span>Saturday</span><span>9:00 AM - 4:00 PM</span></li>
+                        <li><span>Sunday</span><span>Closed</span></li>
+                    </ul>
+                </div>
+
+                <div class="emergency-contact">
+                    <h4>Emergency Maintenance</h4>
+                    <p>For urgent property issues after hours:</p>
+                    <p><strong>+237 677 123 456</strong> (24/7)</p>
+                </div>
+            </div>
+
+            <!-- Agent Contact -->
+            <div class="agent-section">
+                <h3>Meet Our Agents</h3>
+                
+                <div class="agent-card">
+                    <div class="agent-photo">👤</div>
+                    <div class="agent-info">
+                        <h4>Sarah Johnson</h4>
+                        <p>Senior Property Consultant</p>
+                        <p>Specializing in luxury homes & commercial properties</p>
+                        <p><strong>+237 677 123 456</strong></p>
+                        <p>sarah@devproperties.com</p>
+                    </div>
+                </div>
+
+                <div class="agent-card">
+                    <div class="agent-photo">👤</div>
+                    <div class="agent-info">
+                        <h4>Michael Chen</h4>
+                        <p>Residential Property Specialist</p>
+                        <p>Expert in family homes & apartments</p>
+                        <p><strong>+237 677 987 654</strong></p>
+                        <p>michael@devproperties.com</p>
+                    </div>
+                </div>
+
+                <div class="agent-card">
+                    <div class="agent-photo">👤</div>
+                    <div class="agent-info">
+                        <h4>Amina Diallo</h4>
+                        <p>Commercial & Investment Properties</p>
+                        <p>Specialist in business properties & land</p>
+                        <p><strong>+237 677 555 789</strong></p>
+                        <p>amina@devproperties.com</p>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://wa.me/237677123456">WhatsApp</a>
+                    <a href="mailto:info@devproperties.com">Email Us</a>
+                    <a href="tel:+237677123456">Call Now</a>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <h3>Property Inquiry Form</h3>
+                
+                <form id="propertyInquiryForm">
+                    <div class="form-group">
+                        <label for="inquiry_type">I am interested in:</label>
+                        <select id="inquiry_type" name="inquiry_type" required>
+                            <option value="">Select inquiry type</option>
+                            <option value="buy">Buying a property</option>
+                            <option value="sell">Selling a property</option>
+                            <option value="rent">Renting a property</option>
+                            <option value="invest">Investment properties</option>
+                            <option value="general">General inquiry</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="property_type">Property Type:</label>
+                        <select id="property_type" name="property_type">
+                            <option value="">Any type</option>
+                            <option value="house">House</option>
+                            <option value="apartment">Apartment</option>
+                            <option value="villa">Villa</option>
+                            <option value="commercial">Commercial</option>
+                            <option value="land">Land</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="budget_range">Budget Range:</label>
+                        <select id="budget_range" name="budget_range">
+                            <option value="">Any budget</option>
+                            <option value="under_100k">Under 100M FCFA</option>
+                            <option value="100k_300k">100M - 300M FCFA</option>
+                            <option value="300k_500k">300M - 500M FCFA</option>
+                            <option value="500k_plus">500M+ FCFA</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="full_name">Full Name *</label>
+                        <input type="text" id="full_name" name="full_name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="preferred_contact">Preferred Contact Method:</label>
+                        <select id="preferred_contact" name="preferred_contact">
+                            <option value="phone">Phone Call</option>
+                            <option value="whatsapp">WhatsApp</option>
+                            <option value="email">Email</option>
+                            <option value="visit">Office Visit</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="timeline">When are you looking to move?</label>
+                        <select id="timeline" name="timeline">
+                            <option value="">Flexible</option>
+                            <option value="immediate">Immediate</option>
+                            <option value="1_month">Within 1 month</option>
+                            <option value="3_months">Within 3 months</option>
+                            <option value="6_months">Within 6 months</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" placeholder="Tell us about your property requirements, preferred locations, or any specific needs..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send Property Inquiry</button>
+                </form>
+                
+                <div class="form-success" id="formSuccess" style="display: none;">
+                    Thank you for your inquiry! Our team will contact you within 24 hours.
+                </div>
+            </div>
+        </div>
+
+        <!-- Map Section -->
+        <div class="map-section">
+            <h3>Find Our Office</h3>
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3979.123456789!2d9.123456789!3d4.123456789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNMKwMDcnMDAuMCJOIDnCsDA3JzAwLjAiRQ!5e0!3m2!1sen!2scm!4v1234567890123!5m2!1sen!2scm"
+                    width="100%" 
+                    height="400" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+            <p><strong>Directions:</strong> Located on Molyko Street, opposite the University of Buea main gate</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h3>DevProperties</h3>
+            <p>Your trusted partner in finding the perfect property</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="properties.html">Properties</a>
+                <a href="contact-enhanced.html">Contact</a>
+            </div>
+            <p>&copy; 2025 DevProperties. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Enhanced form handling for real estate inquiries
+        document.getElementById('propertyInquiryForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simulate form submission
+            console.log('Real Estate Inquiry:', data);
+            
+            // Show success message
+            document.getElementById('formSuccess').style.display = 'block';
+            this.reset();
+            
+            // Scroll to success message
+            document.getElementById('formSuccess').scrollIntoView({ behavior: 'smooth' });
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                document.getElementById('formSuccess').style.display = 'none';
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
