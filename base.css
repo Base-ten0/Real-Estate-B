@@ -6,12 +6,19 @@
 
 body{
     font-family: 'Times New Roman', Times, serif;
+    padding-top: 80px; /* Account for fixed navbar height */
 }
 .navbar{
     display: flex;
     justify-content: space-between; 
-    padding: 10m;
+    padding: 10px;
     background-color: #2e8b57;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 .nav-items{
     display: flex;
