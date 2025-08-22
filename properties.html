@@ -388,6 +388,7 @@
     <!-- Navigation -->
     <nav class="navbar">
         <h1>DevProperties</h1>
+        <button class="nav-toggle">☰</button>
         <ul class="nav-items">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
@@ -648,6 +649,27 @@
     </footer>
 
     <script>
+        // Mobile navigation toggle
+        document.querySelector('.nav-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-items').classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('.nav-items');
+            const toggle = document.querySelector('.nav-toggle');
+            if (!nav.contains(event.target) && !toggle.contains(event.target) && nav.classList.contains('active')) {
+                nav.classList.remove('active');
+            }
+        });
+
+        // Close mobile menu when clicking on links
+        document.querySelectorAll('.nav-items a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelector('.nav-items').classList.remove('active');
+            });
+        });
+
         // Filter functionality
         document.addEventListener('DOMContentLoaded', function() {
             const filterButtons = document.querySelectorAll('.filter-btn');
